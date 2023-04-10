@@ -19,8 +19,7 @@ when new secrets added, edited or deleted from the database.
 
 + ##### Basic reading and writing Capabilties 
   File paths are retrieved via `$System.getProperty(Backend.USER_DIRECTORY_IDENTIFIER)`
-  so as to circumvent differences in path syntax across different operating systems. A folder and a database.txt file is
-  generated on behalf of users.  
+  so as to circumvent differences in path syntax across different operating systems. 
   1. Special characters `$~!@#$%^&*()-=_+[]\{}|;':",./<>?` modified before they written into the database so that they 
   do not result in data corruption when it is read subsequently<br>
 + #### Encryption before data is written to the database.
