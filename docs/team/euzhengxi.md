@@ -10,14 +10,14 @@ or hacked.
 ### [X] Code contributed
 [RepoSense link](https://nus-cs2113-ay2223s2.github.io/tp-dashboard/?search=euzhengxi&breakdown=true)
 ***
-### [X] Features <br>
-#### 1. Save Command - `$save` <br>
+### [X] Features
+#### 1. Save Command - `$save`
 All credentials submitted by users thus far will be written to the database. This function is automatically triggered 
 when new secrets added, edited or deleted from the database.
 
-#### 2. Backend - Saving and Loading of user data <br>
+#### 2. Backend - Saving and Loading of user data
 
-+ ##### Basic reading and writing Capabilties <br> 
++ ##### Basic reading and writing Capabilties 
   File paths are retrieved via `$System.getProperty(Backend.USER_DIRECTORY_IDENTIFIER)`
   so as to circumvent differences in path syntax across different operating systems. A folder and a database.txt file is
   generated on behalf of users.  
@@ -30,7 +30,7 @@ when new secrets added, edited or deleted from the database.
   Checks have to be performed to verify the veracity of the data when a new session starts. These checks can be divided into 4 main categories: <br>
    1. Ensuring `$name` and  `$folder name` only contain alphanumeric characters
   ```java
-     if (Secret.isIllegalName(input[2]) || !SecretMaster.isLegalFolderName(input[3]))
+     if (Secret.isIllegalName(input[2]) || !SecretMaster.isLegalFolderName(input[3])) {
   ```
    2. Ensuring the other fields in a particular secret are valid with respect to the context they are used.
   ```java
@@ -55,10 +55,7 @@ when new secrets added, edited or deleted from the database.
 - Log Formatter <br>
   A custom formatter class is created by extending from the Formatter class in Logging.
 ```java
-public class SecureNUSLogFormatter extends Formatter{
-    @Override
-    public String format(LogRecord record) {
-      ...
+public class SecureNUSLogFormatter extends Formatter {
 ```
   Within the abstract method `$format`, all relevant information are rearranged and formatted using
   static methods based on the context of the information.
@@ -71,11 +68,13 @@ Added assertions to the code to better safeguard the program against unexpected 
 ### [X] Contributions to Team Based Tasks <br>
 1. Wrote the junit tests for various Backend Functionalities
 2. Authored the text-ui-tests to automate testing for the core functionalities implemented in the program
-3. Team PR reviewed [[#48](https://github.com/AY2223S2-CS2113-T15-2/tp/pull/48)]
-4. Reviewed UG and performed manual regression tests on the functionalities of the program [[Issues](https://github.com/AY2223S2-CS2113-T15-2/tp/issues?q=is%3Aissue+author%3Aeuzhengxi+is%3Aclosed)]
+
+### [X] Review/mentoring contributions
+1. Team PR reviewed [[#48](https://github.com/AY2223S2-CS2113-T15-2/tp/pull/48)]
+2. Reviewed UG and performed manual regression tests on the functionalities of the program 
+[[Issues](https://github.com/AY2223S2-CS2113-T15-2/tp/issues?q=is%3Aissue+author%3Aeuzhengxi+is%3Aclosed)]
 
 ### [X] Community
-
 - Contributed to forum discussions [[1](https://github.com/nus-cs2113-AY2223S2/forum/issues/45)]
 - Reported bugs and suggestions for other teams in the class [[1](https://github.com/nus-cs2113-AY2223S2/ip/pull/20/files/567e6fcf4d4be8fb7d3f6b8b456ad72597cf7388),
   [2](https://github.com/nus-cs2113-AY2223S2/ip/pull/114/files/2fa55392cbbbf776812bc0878ca9b4040edc5267),
