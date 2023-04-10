@@ -96,6 +96,14 @@ _____________________________________________________
         Program Crashed:  unexpected exception: null
         Time: 2023-04-09T23:47:28.668632600Z
 ```
+- Log Formatter <br>
+  A custom formatter class is created by extending from the Formatter class in Logging.
+```java
+public class SecureNUSLogFormatter extends Formatter{
+    @Override
+    public String format(LogRecord record) {
+      ...
+```
   Within the abstract method `$format`, all relevant information are rearranged and formatted using
   static methods based on the context of the information.
 ```java
