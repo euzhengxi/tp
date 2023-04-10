@@ -34,8 +34,8 @@ _____________________________________________________
   so as to circumvent differences in path syntax across different operating systems. A folder and a database.txt file is
   generated on behalf of users.  
   1. Special characters `$~!@#$%^&*()-=_+[]\{}|;':",./<>?`can be submitted in certain fields. To ensure the veracity of 
-  the data, modifications have to be performed before they are written into the database. When reading from the database, 
-  these modifications have to be reversed accordingly.<br> <br>
+  the data, modifications have to be performed before they are written into the database. Failure to do so messes up how 
+  data is read, which results in data corruption even when it is valid. When reading from the database, these modifications have to be reversed accordingly.<br> <br>
 + #### Encryption before data is written to the database.
   Sensitive fields like `$username` and `$password` are encrypted into the database when it is written to the database and
   decrypted again when loaded into the program <br> <br>
@@ -67,7 +67,7 @@ _____________________________________________________
    4. Final checks using the hashcode of the data <br>
       A hashcode is generated for all information written to the database. Before data is loaded into the program,
       this hashcode will be cross referenced. This serves as the final line of defense against any manipulation of user
-      user data in the database
+      data in the database
   ```java
      public static String hash(String data) {
         int hashcode = 0;
@@ -82,7 +82,7 @@ _____________________________________________________
   logged and labelled with unique identifiers to aid in the debugging process subsequently. 
 ```java
 
----------------------------------| Session began at: 2023-04-09T23:28:12.788915800Z |-------------------------------------------------------------------| Session began at: 2023-04-09T23:29:18.053986200Z |-----------------------------------
+---------------------------------| Session began at: 2023-04-09T23:28:12.788915800Z |-----------------------------------
 
         command by user:  new pass10
         fields:  idk.com,  c/,
@@ -95,12 +95,9 @@ _____________________________________________________
         ------------
         Program Crashed:  unexpected exception: null
         Time: 2023-04-09T23:47:28.668632600Z
-
 ```
-        ...
-  ```
-Within the abstract method format, all relevant information are rearranged and formatted using
-static methods based on the context of the information.
+  Within the abstract method `$format`, all relevant information are rearranged and formatted using
+  static methods based on the context of the information.
 ```java
     if (logArray[0].equals("fatal")) {
         return SecureNUSLogFormatter.fatalLog(record);
