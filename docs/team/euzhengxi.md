@@ -35,32 +35,17 @@ when new secrets added, edited or deleted from the database.
    2. Ensuring the other fields in a particular secret are valid with respect to the context they are used.
   ```java
     if (!creditCardNumber.matches(CREDIT_CARD_NUMBER_FMT)) {
-        throw new InvalidCreditCardNumberException();
-    }
   ``` 
    3. Ensuring that there are no secrets with duplicate names
    4. Final checks using the hashcode of the data <br>
       A hashcode is generated for all information written to the database. This hashcode will be cross referenced before
       it is loaded into the program.
-  ```java
-     public static String hash(String data) {
-        int hashcode = 0;
-        ...
-  ```
+
 
 #### 3. Logging Capabilities - Logging of appropriate user data to assist in debugging 
 - Logging Architecture <br>
   All Commands and inputs submitted by users are logged. Unique identifiers are added for errors and unexpected outputs.
 ```java
-
----------------------------------| Session began at: 2023-04-09T23:28:12.788915800Z |-----------------------------------
-
-        command by user:  new pass10
-        fields:  idk.com,  c/,
-        >>>>user cancelled operation
-
-        command by user:  exit
-        fields:
         ------------
         | ALERT !!!|
         ------------
@@ -81,10 +66,7 @@ public class SecureNUSLogFormatter extends Formatter{
 ***
 ### [X] Assertions <br>
 Added assertions to the code to better safeguard the program against unexpected inputs and lapses in programming logic
-``` java
-    assert this.storage != null;
-    assert index >= 0;
-```
+
 
 ### [X] Contributions to Team Based Tasks <br>
 1. Wrote the junit tests for various Backend Functionalities
