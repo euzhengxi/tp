@@ -78,7 +78,8 @@ _____________________________________________________
 
 #### 3. Logging Capabilities - Logging of appropriate user data to assist in debugging 
 - Logging Architecture <br>
-  All user input is logged
+  Commands and inputs submitted by users are logged at the appropriate levels. All errors and unexpected outputs are 
+  logged and labelled with unique identifiers to aid in the debugging process subsequently. 
 ```java
 
 ---------------------------------| Session began at: 2023-04-09T23:28:12.788915800Z |-------------------------------------------------------------------| Session began at: 2023-04-09T23:29:18.053986200Z |-----------------------------------
@@ -107,8 +108,8 @@ _____________________________________________________
 Within the abstract method format, all relevant information are rearranged and formatted using
 static methods based on the context of the information.
 ```java
-    if (logArray[0].equals("start")) {
-        return SecureNUSLogFormatter.startOfSessionLog(record);
+    if (logArray[0].equals("fatal")) {
+        return SecureNUSLogFormatter.fatalLog(record);
     }
 ```
 <br>
@@ -128,6 +129,7 @@ Added assertions to the code to better safeguard the program against unexpected 
 1. Wrote the junit tests for various Backend Functionalities
 2. Authored the text-ui-tests to automate testing for the core functionalities implemented in the program
 3. Team PR reviewed [[#48](https://github.com/AY2223S2-CS2113-T15-2/tp/pull/48)]
+4. Reviewed UG and performed manual regression tests on the functionalities of the program [[Issues](https://github.com/AY2223S2-CS2113-T15-2/tp/issues?q=is%3Aissue+author%3Aeuzhengxi+is%3Aclosed)]
 
 ### [X] Community
 
