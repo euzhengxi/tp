@@ -35,10 +35,10 @@ _____________________________________________________
   generated on behalf of users.  
   1. Special characters `$~!@#$%^&*()-=_+[]\{}|;':",./<>?`can be submitted in certain fields. To ensure the veracity of 
   the data, modifications have to be performed before they are written into the database. Failure to do so messes up how 
-  data is read, which results in data corruption even when it is valid. When reading from the database, these modifications have to be reversed accordingly.<br> <br>
+  data is read, which results in data corruption even when it is valid. When reading from the database, these modifications have to be reversed accordingly.<br>
 + #### Encryption before data is written to the database.
   Sensitive fields like `$username` and `$password` are encrypted into the database when it is written to the database and
-  decrypted again when loaded into the program <br> <br>
+  decrypted again when loaded into the program <br>
 + #### Ensuring data validity<br> 
   Intentional / unintentional edits may be performed on the data in database.txt file. Therefore checks have to be
   performed to verify the veracity of the data when a new session starts. These checks can be divided into 4 main categories: <br> <br>
