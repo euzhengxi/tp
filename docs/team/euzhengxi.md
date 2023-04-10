@@ -46,11 +46,7 @@ when new secrets added, edited or deleted from the database.
 - Logging Architecture <br>
   All Commands and inputs submitted by users are logged. Unique identifiers are added for errors and unexpected outputs.
 ```java
-        ------------
-        | ALERT !!!|
-        ------------
         Program Crashed:  unexpected exception: null
-        Time: 2023-04-09T23:47:28.668632600Z
 ```
 - Log Formatter <br>
   A custom formatter class is created by extending from the Formatter class in Logging.
@@ -61,11 +57,11 @@ public class SecureNUSLogFormatter extends Formatter {
   static methods based on the context of the information.
 
 ***
-### [X] Assertions <br>
+### [X] Assertions 
 Added assertions to the code to better safeguard the program against unexpected inputs and lapses in programming logic
 
 
-### [X] Contributions to Team Based Tasks <br>
+### [X] Contributions to Team Based Tasks 
 1. Wrote the junit tests for various Backend Functionalities
 2. Authored the text-ui-tests to automate testing for the core functionalities implemented in the program
 
