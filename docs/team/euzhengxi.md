@@ -6,42 +6,28 @@ Examples of such credentials include basic password, credit card details as well
 Information submitted by users are encrypted to safeguard the interests of the user in the event the device is lost
 or hacked.
 
-<br>
-
 ## Summary of Contributions
 ### [X] Code contributed
 [RepoSense link](https://nus-cs2113-ay2223s2.github.io/tp-dashboard/?search=euzhengxi&breakdown=true)
-<br>
 ***
 ### [X] Features <br>
 #### 1. Save Command - `$save` <br>
 All credentials submitted by users thus far will be written to the database. This function is automatically triggered 
 when new secrets added, edited or deleted from the database.
-```
-Enter Command: $save
-_____________________________________________________
-Saving secrets to storage, please do not close application...
-_____________________________________________________
-_____________________________________________________
-Save complete. All secrets saved into assets/database.txt.
-If exporting to another device, save this file into the root directory's assets/database.txt before you start me again!
-_____________________________________________________
-```
+
 #### 2. Backend - Saving and Loading of user data <br>
 
 + ##### Basic reading and writing Capabilties <br> 
   File paths are retrieved via `$System.getProperty(Backend.USER_DIRECTORY_IDENTIFIER)`
   so as to circumvent differences in path syntax across different operating systems. A folder and a database.txt file is
   generated on behalf of users.  
-  1. Special characters `$~!@#$%^&*()-=_+[]\{}|;':",./<>?`can be submitted in certain fields. To ensure the veracity of 
-  the data, modifications have to be performed before they are written into the database. Failure to do so messes up how 
-  data is read, which results in data corruption even when it is valid. When reading from the database, these modifications have to be reversed accordingly.<br>
+  1. Special characters `$~!@#$%^&*()-=_+[]\{}|;':",./<>?` modified before they written into the database so that they 
+  do not result in data corruption when it is read subsequently<br>
 + #### Encryption before data is written to the database.
   Sensitive fields like `$username` and `$password` are encrypted into the database when it is written to the database and
   decrypted again when loaded into the program <br>
-+ #### Ensuring data validity<br> 
-  Intentional / unintentional edits may be performed on the data in database.txt file. Therefore checks have to be
-  performed to verify the veracity of the data when a new session starts. These checks can be divided into 4 main categories: <br> <br>
++ #### Ensuring data validity  
+  Checks have to be performed to verify the veracity of the data when a new session starts. These checks can be divided into 4 main categories: <br>
    1. Ensuring `$name` and  `$folder name` only contain alphanumeric characters
   ```java
      if (Secret.isIllegalName(input[2]) || !SecretMaster.isLegalFolderName(input[3]))
@@ -51,35 +37,20 @@ _____________________________________________________
     if (!creditCardNumber.matches(CREDIT_CARD_NUMBER_FMT)) {
         throw new InvalidCreditCardNumberException();
     }
-    if (!expiryDate.matches(EXPIRY_DATE_FMT)) {
-        throw new InvalidExpiryDateException();
-    }
-    if (!isLegalCvcNumber(cvcNumber)) {
-        throw new InvalidCVCNumberException();
-    }
   ``` 
    3. Ensuring that there are no secrets with duplicate names
-  ```java
-      if (secretNames.contains(secret.getUid())) {
-          throw new RepeatedIdException();
-      }
-  ```
    4. Final checks using the hashcode of the data <br>
-      A hashcode is generated for all information written to the database. Before data is loaded into the program,
-      this hashcode will be cross referenced. This serves as the final line of defense against any manipulation of user
-      data in the database
+      A hashcode is generated for all information written to the database. This hashcode will be cross referenced before
+      it is loaded into the program.
   ```java
      public static String hash(String data) {
         int hashcode = 0;
         ...
-     }
   ```
-<br>
 
 #### 3. Logging Capabilities - Logging of appropriate user data to assist in debugging 
 - Logging Architecture <br>
-  Commands and inputs submitted by users are logged at the appropriate levels. All errors and unexpected outputs are 
-  logged and labelled with unique identifiers to aid in the debugging process subsequently. 
+  All Commands and inputs submitted by users are logged. Unique identifiers are added for errors and unexpected outputs.
 ```java
 
 ---------------------------------| Session began at: 2023-04-09T23:28:12.788915800Z |-----------------------------------
@@ -106,12 +77,6 @@ public class SecureNUSLogFormatter extends Formatter{
 ```
   Within the abstract method `$format`, all relevant information are rearranged and formatted using
   static methods based on the context of the information.
-```java
-    if (logArray[0].equals("fatal")) {
-        return SecureNUSLogFormatter.fatalLog(record);
-    }
-```
-<br>
 
 ***
 ### [X] Assertions <br>
@@ -119,9 +84,6 @@ Added assertions to the code to better safeguard the program against unexpected 
 ``` java
     assert this.storage != null;
     assert index >= 0;
-    if (index >= storage.size()) {
-        throw new ArrayIndexOutOfBoundsException();
-    } 
 ```
 
 ### [X] Contributions to Team Based Tasks <br>
